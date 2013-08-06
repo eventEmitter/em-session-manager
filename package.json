@@ -1,0 +1,24 @@
+{
+      "name":           "em-session-manager"
+    , "description":    "session middleware for ee-webservice"
+    , "version":        "0.1.0"
+    , "homepage":       "https://github.com/eventEmitter/em-session-manager"
+    , "author":         "Michael van der Weg <michael@eventemitter.com> (http://eventemitter.com/)" 
+    , "repository": {
+        "url":          "https://github.com/eventEmitter/em-session-manager"
+    }
+    , "engines": {
+        "node":         "*"
+    }
+    , "bugs": {
+        "url":          "https://github.com/eventEmitter/em-session-manager/issues"
+    }
+    , "dependencies": {
+          "ee-class":       "*"
+        , "ee-log":         "*"
+        , "zmq":            "2.4.0"
+        , "ee-lru-cache":   "*"
+    }
+    , "devDependencies": {}
+    , "optionalDependencies": {}
+}
