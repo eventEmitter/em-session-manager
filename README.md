@@ -1,6 +1,6 @@
 #ee-session
 
-middleware for ee-webservice. sessions module with caching. sessions persisted via a storagemanager, cached on a per process basis. if you enable local caching of sessions you need session affinity by the laod balancers. requests from the same client _must_ alwyas be sent to the same process. store _never_ critical data in sessions, persist ciritcal data always in a db. do not store large amounts of data on a session: not > 1kb! please read the following stack overflow article: http://stackoverflow.com/questions/3841341/implications-of-distributed-sessions-on-development.
+middleware for ee-webservice. sessions module with caching. sessions persisted via a storagemanager, cached on a per process basis. if you enable local caching of sessions you need session affinity by the laod balancers. requests from the same client _must_ always be sent to the same process. store _never_ critical data in sessions, persist ciritcal data always in a db. do not store large amounts of data on a session: not > 1kb! please read the following stack overflow article: http://stackoverflow.com/questions/3841341/implications-of-distributed-sessions-on-development.
 
 ATTENTION: you must make absolutely sure that session affinity is working! if it's not working you will get different states on all your nodes! ( so on one server the user may be signed in, on the other not ).
 
@@ -26,6 +26,7 @@ ATTENTION: you must make absolutely sure that session affinity is working! if it
 		, path: 	"/my/path" 		// the cookies path directive, defaults to /
 		, secure: 	true
 		, httpOnly: true
+		, host: 	"a.com"
 	} );
 
 	// sessions will be detected via cookie
@@ -47,11 +48,8 @@ ATTENTION: you must make absolutely sure that session affinity is working! if it
 	sessions.setPersistenStorage( storage );
 
 	// add sessions identities
-	// domain is the domain this identity should be used for, if domain is null the manager will be used on all domains
-	// attention: cookies will never be sent fomr domain a to domain b from any browser, you have to set cookies per domain 
-	// if you wish to share a session between domains
-	sessions.setIdentityManager( "a.com", domainACookie );
-	sessions.setIdentityManager( null, domainBCookie );
+	sessions.setIdentityManager( domainACookie );
+	sessions.setIdentityManager( domainBCookie );
 
 
 	// add to webservice
