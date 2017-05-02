@@ -1,5 +1,7 @@
 #ee-session
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/eventEmitter/em-session-manager.svg)](https://greenkeeper.io/)
+
 middleware for ee-webservice. sessions module with caching. sessions persisted via a storagemanager, cached on a per process basis. if you enable local caching of sessions you need session affinity by the laod balancers. requests from the same client _must_ always be sent to the same process. store _never_ critical data in sessions, persist ciritcal data always in a db. do not store large amounts of data on a session: not > 1kb! please read the following stack overflow article: http://stackoverflow.com/questions/3841341/implications-of-distributed-sessions-on-development.
 
 ATTENTION: you must make absolutely sure that session affinity is working! if it's not working you will get different states on all your nodes! ( so on one server the user may be signed in, on the other not ).
