@@ -16,7 +16,7 @@
     , "dependencies": {
           "ee-class":       "*"
         , "ee-log":         "*"
-        , "zmq":            "2.4.0"
+        , "zmq":            "2.15.3"
         , "ee-lru-cache":   "*"
     }
     , "devDependencies": {}
